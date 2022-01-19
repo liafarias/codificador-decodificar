@@ -3,6 +3,7 @@
 <p> Esse projeto é uma ferramenta para enviar mensagens criptografadas rapidamente, ou descriptografar mensagens recebidas por nosso codigo.</p>
 <br>
 <h2>Print da Tela</h2>
+
 ![preview](https://raw.githubusercontent.com/liafarias/codificador-decodificar/master/img/print.gif)
 <br>
 
