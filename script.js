@@ -1,15 +1,8 @@
 let frase = document.querySelector("#entrada");
-
-let codificar = document.querySelector("#btn-cripto");
-
-let decodificar = document.querySelector("#btn-descripto");
-
-let copiar = document.querySelector("#btn-copy");
-
 let result = document.querySelector("#saida");
-
-let resultado = document.querySelector(".button_Result");
-
+let codificar = document.querySelector("#btn-cripto");
+let decodificar = document.querySelector("#btn-descripto");
+let copiar = document.querySelector("#btn-copy");
 const regex = new RegExp("^[a-z 0-9\b]");
 
 
@@ -17,7 +10,7 @@ codificar.addEventListener('click', (event) => {
 
     event.preventDefault();
 
-    result.textContent = caracteres(convert(frase.value));
+    result.textContent = caracteres(codifica(frase.value));
 
     frase.value = "";
 
@@ -27,7 +20,7 @@ decodificar.addEventListener('click', (event) => {
 
     event.preventDefault();
 
-    result.textContent = caracteres(desconvert(frase.value));
+    result.textContent = caracteres(descodifica(frase.value));
 
     frase.value = "";
 
@@ -41,44 +34,42 @@ copiar.addEventListener('click', (event) => {
 
     document.execCommand('copy');
     frase.value = "";
-    alert("copiado")
 })
 
 
 
-function convert(frase) {
+function codifica(frase) {
 
-    let nova_Frase = frase.replace(/e/gi, "enter")
+    let fraseCodificada = frase.replace(/e/gi, "enter")
         .replace(/i/gi, "imes")
         .replace(/a/gi, "ai")
         .replace(/o/gi, "ober")
         .replace(/u/gi, "ufat").toLowerCase();
 
-    return nova_Frase;
+    return fraseCodificada;
 
 }
 
-function desconvert(frase) {
+function descodifica(frase) {
 
-    let nova_Frase_desconvert = frase.replace(/enter/gi, "e")
+    let fraseDescodificada = frase.replace(/enter/gi, "e")
         .replace(/imes/gi, "i")
         .replace(/ai/gi, "a")
         .replace(/ober/gi, "o")
         .replace(/ufat/gi, "u");
 
-    return nova_Frase_desconvert;
+    return fraseDescodificada;
 
 }
 
-function caracteres(frase_teste) {
+function caracteres(frase) {
 
-    if (!regex.test(frase_teste)) {
+    if (!regex.test(frase)) {
 
-        return "CARACTERES ESPECIAIS NÃO SÃO PERIMITIDOS"
+        return "ATENÇÃO: Você precisa digitar frases com apenas letras minúsculas e sem acento para continuar."
     }
-
     else {
-        return  frase_teste;
+        return  frase;
 
     }
 
