@@ -1,38 +1,88 @@
-function codificar() {
-var normal = document.getElementById("entrada");
-var codificar = document.getElementById("saida");
-var texto = entrada.value;
+let frase = document.querySelector("#entrada");
 
-texto = texto.replace("e", "enter");
-texto = texto.replace("i", "imes");
-texto = texto.replace("a", "ai");
-texto = texto.replace("o", "ober");
-texto = texto.replace("u", "ufat");
+let codificar = document.querySelector("#btn-cripto");
 
-saida.value = texto;
+let decodificar = document.querySelector("#btn-descripto");
+
+let copiar = document.querySelector("#btn-copy");
+
+let result = document.querySelector("#saida");
+
+let resultado = document.querySelector(".button_Result");
+
+const regex = new RegExp("^[a-z 0-9\b]");
+
+
+codificar.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    result.textContent = caracteres(convert(frase.value));
+
+    frase.value = "";
+
+})
+
+decodificar.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    result.textContent = caracteres(desconvert(frase.value));
+
+    frase.value = "";
+
+})
+
+copiar.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    result.select();
+
+    document.execCommand('copy');
+    frase.value = "";
+    alert("copiado")
+})
+
+
+
+function convert(frase) {
+
+    let nova_Frase = frase.replace(/e/gi, "enter")
+        .replace(/i/gi, "imes")
+        .replace(/a/gi, "ai")
+        .replace(/o/gi, "ober")
+        .replace(/u/gi, "ufat").toLowerCase();
+
+    return nova_Frase;
+
 }
 
-function decodificar() {
-    var normal = document.getElementById("entrada");
-    var codificar = document.getElementById("saida");
-    var texto = entrada.value;
-    
-    texto = texto.replace("enter", "e");
-    texto = texto.replace("imes", "i");
-    texto = texto.replace("ai", "a");
-    texto = texto.replace("ober", "o");
-    texto = texto.replace("ufat", "u");
-    
-    saida.value = texto;
+function desconvert(frase) {
+
+    let nova_Frase_desconvert = frase.replace(/enter/gi, "e")
+        .replace(/imes/gi, "i")
+        .replace(/ai/gi, "a")
+        .replace(/ober/gi, "o")
+        .replace(/ufat/gi, "u");
+
+    return nova_Frase_desconvert;
+
 }
 
-    function btnCopy() {
-        let textoCopiado = document.getElementById("saida");
-        textoCopiado.select();
-        textoCopiado.setSelectionRange(0, 99999)
-        document.execCommand("copy");
+function caracteres(frase_teste) {
+
+    if (!regex.test(frase_teste)) {
+
+        return "CARACTERES ESPECIAIS NÃO SÃO PERIMITIDOS"
     }
 
+    else {
+        return  frase_teste;
+
+    }
+
+}
 
 /* Regras Codificador: 
 "e" é convertido para "enter" 
