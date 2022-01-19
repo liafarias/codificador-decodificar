@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <a href="#">
+            <img src="./img/logo.png" alt="logo">
+        </a>
+      </header> 
+
+    <main class="main">
+        <section class="form-box">
+            <label class="titulo" for="input-texto"><strong>Digite seu texto</strong></label>
+            <textarea class="text-input" name="input-texto" id="entrada" placeholder="Digite um texto que você deseja criptografar ou descriptografar."></textarea>
+            <p id="atencao"><img src="./img/exclamacao.png" alt="">Apenas letras minúsculas e sem acento.</p>
+            <button class="btn" id="btn-cripto" onclick="codificar()">Criptografar</button>
+            <button class="btn" id="btn-descripto" onclick="decodificar()">Descriptografar</button>
+        </section>
+
+        <section class="msg box">
+            <img class="imagemPrincipal" src="./img/imagem-principal.png" alt="">
+            <p id="subtitulo"><strong>Mensagem criptografada:</strong></p>
+            <textarea class="text-input" name="" id="saida" placeholder="Nenhuma mensagem encontrada. Volte e digite um texto."></textarea>
+            <button class="btn" id="btn-copy" onclick="btnCopy()">Copiar</button>
+        </section>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
